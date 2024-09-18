@@ -16,3 +16,9 @@ jobs:
 
       - name: NPM test
         run: npm test
+  
+  second_job:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Second job running"
