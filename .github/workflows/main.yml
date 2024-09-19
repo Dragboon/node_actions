@@ -14,19 +14,13 @@ jobs:
       - name: NPM install
         run: npm install
 
-      - name: NPM test
-        run: npm test
+      - name: Run tests
+        run: npx jest --coverage
   
-      - name: Code Coverage Report
-        uses: irongut/CodeCoverageSummary@v1.3.0
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v4
         with:
-          filename: coverage.cobertura.xml
-
-      - uses: codecov/codecov-action@v4
-        with:
-          fail_ci_if_error: true # optional (default = false)
-          token: ${{ secrets.CODECOV_TOKEN }} # required
-          verbose: true # optional (default = false)
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   second_job:
     needs: build
