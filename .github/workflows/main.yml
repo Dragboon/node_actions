@@ -22,6 +22,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
+      - name: Hello world!
+        run: echo Hello World
+
   second_job:
     needs: build
     runs-on: ubuntu-latest
